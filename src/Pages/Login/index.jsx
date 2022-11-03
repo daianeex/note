@@ -7,13 +7,13 @@ import Input from "../../components/input";
 import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({onReceiveGoogle}) => {
-//const navigate = useNavigate()
+const navigate = useNavigate()
 
     const actionLoginGoogle = async (e) => {
         e.preventDefault();
         googleLogar()
         .then(() => {
-            alert("Entrou");
+            navigate("/feed");
         })
         .catch((error) => {
             alert("Error");

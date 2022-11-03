@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter, Routes as RoutesDOM } from "react-router-dom";
+import Feed from "./Pages/Feed";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -12,6 +13,7 @@ const Routes = () => {
             <Route path="/" element={<Home />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Login" element={<Login />} />
+                <Route path="/Feed" element={<Feed />} />
             </RoutesDOM>
         </BrowserRouter>
     );
