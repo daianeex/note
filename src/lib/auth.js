@@ -1,10 +1,26 @@
-/*import { getAuth, 
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signInWithPopup, 
-    GoogleAuthProvider } from "firebase/auth";
+import { firebase, initializeApp } from 'firebase/app';
+import firebaseConfig from "./firebaseConfig"
+import "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth"
+// eslint-disable-next-line import/no-anonymous-default-export
+const app = initializeApp(firebaseConfig);
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
 
-export const auth = getAuth();
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+
+  googleLogar: async () => {
+    signInWithPopup(provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+    })
+  }
+}
+
+/*export const auth = getAuth();
 export const provider = new GoogleAuthProvider();
 
 export function createUser (name, email, password) {
@@ -27,9 +43,9 @@ export function userLogin(email, password) {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
-}
+}*/
 
-export function LoginGoogle(auth, provider) {
+/*export function LoginGoogle(auth, provider) {
   return signInWithPopup(auth, provider)
   .then((result) => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
