@@ -1,7 +1,11 @@
 import { firebase, initializeApp } from 'firebase/app';
 import firebaseConfig from "./firebaseConfig"
 import "firebase/auth";
-import { GoogleAuthProvider, signInWithPopup, getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { GoogleAuthProvider, 
+  signInWithPopup, 
+  getAuth, 
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword } from "firebase/auth"
 // eslint-disable-next-line import/no-anonymous-default-export
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
@@ -17,7 +21,7 @@ export function googleLogar() {
     })
   }
 
-/*export function createUser (name, email, password) {
+export function createUser (name, email, password) {
     return createUserWithEmailAndPassword(auth, name, email, password).then((userCredential) => {
     const user = userCredential.user;
     return user;
@@ -26,7 +30,7 @@ export function googleLogar() {
         const errorCode = error.code;
         const errorMessage = error.message;
     });
-}*/
+}
 
 export function userLogin(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
@@ -39,14 +43,4 @@ export function userLogin(email, password) {
     });
 }
 
-/*export function LoginGoogle(auth, provider) {
-  return signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;  
-  })
-}*/
+
