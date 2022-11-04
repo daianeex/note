@@ -2,14 +2,16 @@ import React from "react";
 import Button from "../../components/button";
 import Input from "../../components/input";
 import { createUser } from "../../lib/auth";
+import { useNavigate, Link } from "react-router-dom";
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
-
+    const navigate = useNavigate()
     const actionRegister = async (e) => {
         e.preventDefault();
         createUser()
         .then(() => {
-            alert("Registrou");
+            navigate("/feed");
         })
         .catch((error) => {
             alert("Error");
@@ -24,7 +26,6 @@ export default () => {
         <Input id="password" name="password" required="required" type="password" placeholder="Senha"/>
         <Button onClick={actionRegister}>Register</Button>
         <p>Esqueceu sua senha?</p>
-        <p>Não tem conta? Criar</p>
 
     </>
     )

@@ -1,10 +1,9 @@
-import { async } from "@firebase/util";
 import React from "react";
 import Auth from "../../lib/auth";
 import Button from "../../components/button";
 import { googleLogar, userLogin } from "../../lib/auth"
 import Input from "../../components/input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({onReceiveGoogle}) => {
 const navigate = useNavigate()
@@ -24,7 +23,7 @@ const navigate = useNavigate()
         e.preventDefault();
         userLogin()
         .then(() => {
-            alert("Entrou");
+            navigate("/feed");
         })
         .catch((error) => {
             alert("Error");
@@ -39,7 +38,7 @@ const navigate = useNavigate()
         <Button onClick={actionLogin}>Entrar</Button>
         <p>Esqueceu sua senha?</p>
         <Button onClick={actionLoginGoogle}>Google</Button>
-        <p>Não tem conta? <a href="/register" /></p>
+        <p>Não tem conta? <Link to="/register">Criar</Link></p>
         
     </main>
     )

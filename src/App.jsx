@@ -1,10 +1,10 @@
 import React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import Routes from "./Routes";
 
 function App(){
 
-  const [user, setUser] = useState(null);
+  //const [user, setUser] = useState(null);
 
 /*  const actionLoginDataGoogle = async (u) => {
     let newUser = {
